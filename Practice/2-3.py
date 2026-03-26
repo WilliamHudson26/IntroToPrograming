@@ -10,8 +10,7 @@
 #AMIWITHINMELEERANGEOFTHEPLAYER = 1 #uppercase
 #amiwithinmeleerangeoftheplayer = 1 #lowercase
 
-print("what is your favorite snack?")
-fav_snack = input()
-
-print("your fav snack is")
-print(fav_snack)
+#print("what is your favorite snack?")
+#fav_snack = input()
+#print("your fav snack is")
+#print(fav_snack)
