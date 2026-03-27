@@ -1,0 +1,5 @@
+animal = input("What is your favorite animal?\n->")
+why = input("Why is this your favorite animal?\n->")
+where = input("Where does it live?\n->")
+fun_fact = input("What is a fun fact about your animal?\n->")
+print ("Your favorite animal is the " + animal + " because " + why + ". It lives in " + where + ", and " + fun_fact + ".")
