@@ -21,4 +21,15 @@ a2 = questionB()
 print("Finaly: What is the magical number that multiplies this fortune?")
 a3 = questionB()
 
-fortune = ((random.randint(1,100) - a1) + a2) * a3
+fortune = 100/(((random.randint(1,100) - a1) + a2) * a3)
+
+if fortune <= 25:
+    print("There will be an opertunity to fulfill your dreams")
+elif fortune <= 50:
+    print("Your work will pay off in a generous sum")
+elif fortune <= 75:
+    print("A great struggle will come upon you")
+elif fortune <= 100:
+    print("Someone you know will be no longer")
+else:
+    print("Your life will be in the hands of a great fate")
