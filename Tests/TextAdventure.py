@@ -1,6 +1,9 @@
 import sys
+import random
 
 def graphics(image):
+#this function draws ASCII graphics when called. This is for title screens, cutscenes, and encounters.
+
     if image == "title":
         print("" \
         " ████  ████  ██       ███   █ ███   ██████ ██       ███   █ ███  ██████ \n" \
@@ -8,6 +11,7 @@ def graphics(image):
         " ███  ██  ██ ██     ███████ █████   █████  ██     ███████ █████  █████  \n" \
         "   ██ ██  ██ ██     ██   ██ ██ █    ██     ██     ██   ██ ██ █   ██     \n" \
         "████   ████  ██████ ██   ██ ██  ██  ██     ██████ ██   ██ ██  ██ ██████ \n")
+
     if image == "helmet stars":
         print("" \
         "      ____________      *                       +                       \n" \
@@ -20,6 +24,23 @@ def graphics(image):
         "  \     \ |||| /     /                +          *                      \n" \
         "   \_____\||||/_____/   *                                  *      *     \n" \
         "   ]‖‖‖‖‖‖‖[]‖‖‖‖‖‖‖[          *            *           +               \n")
+
+    if image == "deck1":
+        print("" \
+        "     ╔═════╗╔═════╗\n" \
+        "     ║ Lif ║║ Eng ║\n" \
+        "     ╚═════╝╚═════╝\n" \
+        "        ║╔════╗║   \n" \
+        "        ╠║    ║║   \n" \
+        "        ║╚════╝║   \n" \
+        "╔════╗  ║    ╔═══╗ \n" \
+        "║    ║══╬════║Elv║ \n" \
+        "╚════╝  ║╔══╗╚═══╝ \n" \
+        "        ║╚══╝  ║   \n" \
+        "        ╚══╩═══╣   \n" \
+        "           ╔══╗║   \n" \
+        "           ╚══╝╚═  \n")
+
 def help(type):
     if type == "title":
         print("Quit: Terminates the program\n" \
@@ -64,6 +85,22 @@ while answer != "start":
     else:
         print("incorrect syntax")
 
+#initialize global variables
+Y_pos = 0
+X_pos = 0
+Health = 100
+Inventory = "empty"
+Effect = "null"
+Flashlight = "off"
+
+#initialize seed
+if seed == 0:
+    #generates a random seed
+    seed = [random.randint(1,8),random.randint(1,8),random.randint(1,8),random.randint(1,8),random.randint(1,8),random.randint(1,8),random.randint(1,8),random.randint(1,8)]
+else:
+    #converts seed into list
+    seed = [int(d) for d in str(seed)]
+
 #Intro
 print("\n" \
 "You are a rookie astronaut tasked with recovering the black box of\n" \
@@ -73,11 +110,20 @@ print("\n" \
 "As you fly in on your shuttle, you see the station creep ever closer.\n" \
 "There is a hanger bay on the middle deck (Deck-2), and another on the bottom deck (Deck-1).\n" \
 "Which one will you dock into?")
-while answer.lower().strip() != "deck-1" or "deck1" or "1" or "deck-2" or "deck2" or "2":
+
+#first choise
+while answer.lower().strip() != "deck1" or answer.lower().strip() != "deck2":
     answer = input("->")
-    if answer.lower().strip() == "deck-1" or "deck1" or "1":
+    if answer.lower().strip() == "deck-1" or answer.lower().strip() == "deck1" or answer.lower().strip() == "1":
         print("You dock your shuttle into the bottom hanger on Deck-1.")
         outcome = "deck1"
-    if answer.lower().strip() == "deck-2" or "deck2" or "2":
+        X_pos = 5
+        Y_pos = 6
+        graphics("deck1")
+    elif answer.lower().strip() == "deck-2" or answer.lower().strip() == "deck2" or answer.lower().strip() == "2":
         print("You dock your shuttle into the hanger on Deck-2.")
         outcome = "deck2"
+        X_pos = 6
+        Y_pos = 4
+    else:
+        print("Not an available option")
