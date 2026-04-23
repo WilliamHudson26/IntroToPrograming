@@ -27,19 +27,31 @@ def graphics(image):
 
     if image == "deck1":
         print("" \
-        "     ╔═════╗╔═════╗\n" \
-        "     ║ Lif ║║ Eng ║\n" \
-        "     ╚═════╝╚═════╝\n" \
-        "        ║╔════╗║   \n" \
-        "        ╠║    ║║   \n" \
-        "        ║╚════╝║   \n" \
-        "╔════╗  ║    ╔═══╗ \n" \
-        "║    ║══╬════║Elv║ \n" \
-        "╚════╝  ║╔══╗╚═══╝ \n" \
-        "        ║╚══╝  ║   \n" \
-        "        ╚══╩═══╣   \n" \
-        "           ╔══╗║   \n" \
-        "           ╚══╝╚═  \n")
+        "     ╔═════╗╔═════╗           \n" \
+        "     ║ Lif ║║ Eng ║           \n" \
+        "     ╚═════╝╚═════╝           \n" \
+        "        ║╔════╗║       ╔═════╗\n" \
+        "        ╠║Lnd ║║  ╔══╗╔║ Gre ║\n" \
+        "        ║╚════╝║  ╚══╝╣╚═════╝\n" \
+        "╔════╗  ║    ╔═══╗    ║   \n" \
+        "║Gar ║══╬════║Elv║══╦═╝   \n" \
+        "╚════╝  ║╔══╗╚═══╝ ╔══╗   \n" \
+        "        ║╚══╝  ║   ╚══╝   \n" \
+        "        ╚══╩═══╣ ╔══════╗ \n" \
+        "           ╔══╗║ ║Hanger║ \n" \
+        "           ╚══╝╩═║      ║ \n" \
+        "                 ╚══════╝ \n")
+
+    if image == "mortis":
+        print("" \
+        "/\ __/\  \n" \
+        "* _ _ *  \n" \
+        "\/   \/  \n" \
+        "|     |  \n" \
+        "^-   -^  \n" \
+        "         \n" \
+        "         \n")
+
 
 def help(type):
     if type == "title":
@@ -91,7 +103,7 @@ X_pos = 0
 Health = 100
 Inventory = "empty"
 Effect = "null"
-Flashlight = "off"
+Flashlight = "on"
 
 #initialize seed
 if seed == 0:
@@ -112,7 +124,10 @@ print("\n" \
 "Which one will you dock into?")
 
 #first choise
-while answer.lower().strip() != "deck1" or answer.lower().strip() != "deck2":
+def choose_dock():
+    global outcome
+    global X_pos
+    global Y_pos
     answer = input("->")
     if answer.lower().strip() == "deck-1" or answer.lower().strip() == "deck1" or answer.lower().strip() == "1":
         print("You dock your shuttle into the bottom hanger on Deck-1.")
@@ -127,3 +142,24 @@ while answer.lower().strip() != "deck1" or answer.lower().strip() != "deck2":
         Y_pos = 4
     else:
         print("Not an available option")
+        choose_dock()
+choose_dock()
+print("You then disembark from your shuttle and enter into a grey mechanical chamber.\n" \
+"The airlock doors creek as they close behind you before locking in place with a loud CLANK.\n" \
+"Finaly, you go to open the door to the interior of the station, but it will not budge.\n" \
+"You put all your weight into pushing open the door before you hear something snap, and the door swings open.\n" \
+"You enter into a cold dark hallway, barely able to be lit by your flashlight.\n" \
+"You have the insentive to go on forward, but some part of you feels a need to find out "
+"whats happening with the door you just opened.\n" \
+"[Type 'inspect' to inspect any specified object]")
+def inspect_tutorial(answer):
+    answer = answer.lower().replace("inspect","")
+    if answer.strip() == "door":
+        print("The inside of the door is hardend with a thick layer of frost.\n" \
+        "When you scan it, it shows to be nitrogen ice derived from dust accumulated over years of stagnation.")
+    else:
+        print("An object must be listed")
+        print(answer)
+answer = input("->")
+if answer.startswith("inspect") == True:
+    inspect_tutorial(answer)
