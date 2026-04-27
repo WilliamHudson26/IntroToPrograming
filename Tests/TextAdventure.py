@@ -27,20 +27,20 @@ def graphics(image):
 
     if image == "deck1":
         print("" \
-        "     ╔═════╗╔═════╗           \n" \
-        "     ║ Lif ║║ Eng ║           \n" \
-        "     ╚═════╝╚═════╝           \n" \
-        "        ║╔════╗║       ╔═════╗\n" \
-        "        ╠║Lnd ║║  ╔══╗╔║ Gre ║\n" \
-        "        ║╚════╝║  ╚══╝╣╚═════╝\n" \
-        "╔════╗  ║    ╔═══╗    ║   \n" \
-        "║Gar ║══╬════║Elv║══╦═╝   \n" \
-        "╚════╝  ║╔══╗╚═══╝ ╔══╗   \n" \
-        "        ║╚══╝  ║   ╚══╝   \n" \
-        "        ╚══╩═══╣ ╔══════╗ \n" \
-        "           ╔══╗║ ║Hanger║ \n" \
-        "           ╚══╝╩═║      ║ \n" \
-        "                 ╚══════╝ \n")
+        "      ╔═════╗╔═════╗           \n" \
+        "      ║ Lif ║║ Eng ║           \n" \
+        "      ╚═════╝╚═════╝           \n" \
+        "         ║╔════╗║       ╔═════╗\n" \
+        "         ╠║Lnd ║║  ╔══╗╔║ Gre ║\n" \
+        "         ║╚════╝║  ╚══╝╣╚═════╝\n" \
+        " ╔════╗  ║    ╔═══╗    ║   \n" \
+        " ║Gar ║══╬════║Elv║══╦═╝   \n" \
+        " ╚════╝  ║╔══╗╚═══╝ ╔══╗   \n" \
+        "         ║╚══╝  ║   ╚══╝   \n" \
+        "         ╚══╩═══╣ ╔══════╗ \n" \
+        "            ╔══╗║ ║Hanger║ \n" \
+        "            ╚══╝╩═║      ║ \n" \
+        "                  ╚══════╝ \n")
 
     if image == "mortis":
         print("" \
@@ -137,7 +137,6 @@ def choose_dock():
         Deck = 1
         X_pos = 5
         Y_pos = 6
-        graphics("deck1")
     elif answer.lower().strip() == "deck-2" or answer.lower().strip() == "deck2" or answer.lower().strip() == "2":
         print("You dock your shuttle into the hanger on Deck-2.")
         outcome = "deck2"
@@ -183,8 +182,8 @@ def move(answer):
         if Deck == 1 and X_pos == 5 and Y_pos == 6:
             X_pos -= 1
             print("You walk to the corner of the hallway.\n" \
-            "You are within reach of the room of you and can allso see the hall extend north.\n" \
-            "At the end of the north hallway, you can see a room with an elevator at the center of it.")
+            "You are within reach of the room infront of you, and the door looks to be unlocked.\n" \
+            "You can also see the hall extend north. At the end of it, you can see a room with an elevator at the center of it.")
 
 def input_loop():
     answer = input("->")
@@ -192,6 +191,11 @@ def input_loop():
         inspect(answer)
     if answer.lower().strip() == "east":
         move(answer)
+    if answer.lower().strip() == "map":
+        if Deck == 1:
+            graphics("deck1")
+        else:
+            print("Error: Outside Boundries")
     else:
         print("Incoherent Syntax...")
         input_loop()
