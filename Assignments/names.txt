@@ -9,5 +9,6 @@ Breen
 Freeman
 Vance
 Cliner
+Waldo
 King
 Tracy
