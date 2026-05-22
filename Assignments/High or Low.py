@@ -33,4 +33,4 @@ while answer != number:
         print("that is not a number!")
     score += 1
 with open("C:\\Users\\825426\\Documents\\Intro to Programing\\IntroToPrograming\\Assignments\\HighorLowScores.txt", "a") as file:
-    file.write("\n" + name + str(score))
+    file.write("\n" + name + "," + str(score))
