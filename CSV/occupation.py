@@ -1,4 +1,4 @@
-import csv #7 points ; 6 points left
+import csv #7 points
 with open("C:\\Users\\825426\\Documents\\Intro to Programing\\IntroToPrograming\\CSV\\occupation-2018-census-csv.csv","r",encoding = "utf-8") as file:
     table = csv.DictReader(file)
     grape_grower = "null"
@@ -8,6 +8,7 @@ with open("C:\\Users\\825426\\Documents\\Intro to Programing\\IntroToPrograming\
     occupation = []
     oc_max = "null"
     oc_min = "null"
+    topfive = { 1: "null", 2: "null", 3: "null", 4: "null", 5: "null"}
 
     for row in table:
         if row['Occupation'] == "Total" or row['Occupation'] == "Total stated" or row['Occupation'] == "Not stated" or row['Occupation'] == "Response outside scope" or row['Occupation'] == "Response unidentifiable":
@@ -24,10 +25,15 @@ with open("C:\\Users\\825426\\Documents\\Intro to Programing\\IntroToPrograming\
             oc_max = row['Occupation']
         if int(row['Employe']) == min(common):
             oc_min = row['Occupation']
-                
-        
+        top_five_number = sorted(common, reverse=True)[:5]
+        if row['Employe'] in top_five_number:
+                print("yes")
+                place = top_five_number.index(row['Employe'])
+                topfive[place] = row['Occupation'] + top_five_number[place]
+    print(top_five_number)
     print("The most common occupation is "+ oc_max +" with "+ str(max(common)) +" employees")
-    print("The most common occupation is "+ oc_min +" with "+ str(min(common)) +" employees")
+    print("The least common occupation is "+ oc_min +" with "+ str(min(common)) +" employees")
     print("There are " + grape_grower + " grape growers")
     print("The occupation with 14298 employees is " + oc_with_num)
     print("The occupation with the code 451311 is " + oc_with_code)
+    print("The top five occupations are: " + str(topfive))
